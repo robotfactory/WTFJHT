@@ -1,10 +1,12 @@
-sudo: required
-dist: precise
+# sudo: required
+# dist: precise
+sudo: false
+dist: trusty
 
 language: ruby
 cache: bundler
 rvm:
-- 2.3.3
+- 2.4.1
 addons:
   apt:
     update: true
@@ -14,7 +16,7 @@ addons:
       - cmake
 before_install:
 - rm Gemfile.lock
-# - gem update bundler
+# - gem install bundler
 before_script:
 - chmod +x ./script/cibuild
 script: travis_wait ./script/cibuild
@@ -34,6 +36,11 @@ deploy:
   on:
     repo: mkiser/WTFJHT
 notifications:
+  email:
+    recipients:
+      - matt@whatthefuckjusthappenedtoday.com
+    on_success: never
+    on_failure: always
   webhooks:
     - https://www.google.com/webmasters/tools/ping?sitemap=https://whatthefuckjusthappenedtoday.com/sitemap.xml
     - http://www.bing.com/ping?sitemap=https://whatthefuckjusthappenedtoday.com/sitemap.xml

@@ -9,10 +9,17 @@
   <script src="{{ site.url }}{{ site.baseurl }}/public/js/riveted.min.js"></script>
   <script src="{{ site.url }}{{ site.baseurl }}/public/js/randomPost.js"></script>
   <script src="{{ site.url }}{{ site.baseurl }}/public/js/rrssb.min.js"></script>
-  
 
-  <!--<script src="{{ site.url }}{{ site.baseurl }}/public/js/bigfoot/bigfoot.js"></script>-->
-  <!--<script src="{{ site.url }}{{ site.baseurl }}/public/js/marquee3k.js"></script>-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+  <script>
+    if($.cookie('membershipdrive') == 'true'){
+      $('#pledgedrive').hide();
+    };
+    $("#close").click(function(){
+      document.cookie = "membershipdrive=true; max-age=129600";
+    });
+  </script>
+
   <script>riveted.init();</script>
   {% include_cached chat.html %}
   {% include_cached audio.html %}
@@ -32,10 +39,3 @@
 
   {% include_cached scrolldepth.html %}
   {% include clickEvent.html %}
-
-
-  <!--
-    <script type="text/javascript">
-      $.bigfoot();
-    </script>
-  -->
